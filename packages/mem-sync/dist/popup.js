@@ -68303,7 +68303,7 @@ const notesContainerStyle = {
     padding: "10px",
 };
 const ogImageStyle = {
-    width: "100%"
+    height: "200px",
 };
 const tagStyle = {
     display: "inline-block",

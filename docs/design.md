@@ -21,6 +21,14 @@ A simple express server backs this, allowing for
  - [Desing discussion](./) (this document)
 
 
+## UI Screenshots
+
+### Basic screens
+![basic ui](./mem-sync-ui.jpg)
+
+### Site with og:image meta tag
+![mem + image](./mem-sync-ui-2.jpg)
+
 ## Information flow
 This is a reasonably simple capability:
 
