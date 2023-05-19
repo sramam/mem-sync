@@ -14,10 +14,7 @@ const PageInfo: React.FC = () => {
   const onChange = useCallback((md: string) => {
     $pageInfo.setKey("notes", md);
     // extract tags from notes and append to existing tags
-    const tagsFromNotes = md
-      .split(/\s+/)
-      .filter((w) => w.length > 1 && w[0] === "#")
-      .map((t) => t.slice(1));
+    const tagsFromNotes = md.match(/(?<!\w)(?<!#)(?!##+#)(#\w+)\b/g)?.map(tag => tag.slice(1)) || [];
     $pageInfo.setKey("noteTags", tagsFromNotes);
   }, []);
 

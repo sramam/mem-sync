@@ -68251,10 +68251,7 @@ const PageInfo = () => {
     const onChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((md) => {
         _stores__WEBPACK_IMPORTED_MODULE_6__.$pageInfo.setKey("notes", md);
         // extract tags from notes and append to existing tags
-        const tagsFromNotes = md
-            .split(/\s+/)
-            .filter((w) => w.length > 1 && w[0] === "#")
-            .map((t) => t.slice(1));
+        const tagsFromNotes = md.match(/(?<!\w)(?<!#)(?!##+#)(#\w+)\b/g)?.map(tag => tag.slice(1)) || [];
         _stores__WEBPACK_IMPORTED_MODULE_6__.$pageInfo.setKey("noteTags", tagsFromNotes);
     }, []);
     const handleTagsChange = (tags) => {
