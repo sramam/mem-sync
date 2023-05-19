@@ -1,0 +1,7 @@
+node_modules
+.env
+junk
+.junk
+.tmp
+tmp
+.DS_Store

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esNext",
+    "module": "esNext",
+    "jsx": "react",
+    "strict": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "outDir": "build"
+  },
+  // we only use tsc to compile the server 
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

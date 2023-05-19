@@ -1,0 +1,5 @@
+// simple scripts to test the system
+curl -X POST -H "Content-Type: application/json" -d '{
+  "content": "Your mem content here"
+}' http://localhost:3000/save_mem
+

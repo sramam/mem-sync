@@ -1,0 +1,16 @@
+{
+  "name": "mem-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpm --dir packages/server start",
+    "build": "pnpm --dir packages/server build && pnpm --dir packages/mem-sync build",
+    "dev": "pnpm --dir packages/server build && pnpm --dir packages/server start",
+    "build:extn": "pnpm --dir packages/mem-sync build",
+    "build:server":  "pnpm --dir packages/server build"
+  },
+  "keywords": [],
+  "author": "sramam",
+  "license": "MIT"
+}
