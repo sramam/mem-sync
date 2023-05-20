@@ -22,6 +22,8 @@ cd mem-sync
 pnpm install
 ```
 
+The extension is available at `$GIT_DIR/packages/mem-sync/dist`
+
 ### Setup API Keys 
 This can be done via the browser extension too. 
 The server reloads the keys when updated via the extension settings
@@ -39,6 +41,8 @@ pnpm start
 ```
 
 ### Install the extension in the browser
+
+> installation dir: `$GIT_DIR/packages/mem-sync/dist`
 
 > WARNING: This extension has only been tested on Google Chrome. 
 
