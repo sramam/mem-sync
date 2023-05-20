@@ -68505,9 +68505,7 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
  * It seems the popup takes much longer than background.js to initialize
  * We'll create an explicit signal that informs background.js that we are ready.
  */
-chrome.runtime.sendMessage({
-    action: "popupRegistration"
-});
+chrome.runtime.sendMessage({ action: "popupRegistration" });
 
 
 /***/ }),

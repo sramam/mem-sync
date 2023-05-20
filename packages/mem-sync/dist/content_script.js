@@ -24,11 +24,13 @@ __webpack_require__.r(__webpack_exports__);
 let loaded = false;
 addEventListener("load", () => (loaded = true));
 function getDomDetails() {
-    // in addition to title and url, we extract the description & og:image when provided. 
+    // in addition to title and url, we extract the description & og:image when provided.
     const ogImageElem = document.querySelectorAll('meta[property="og:image"]')?.[0];
     const descriptionElem = document.querySelectorAll('meta[name="description"]')?.[0];
     const ogImage = ogImageElem ? ogImageElem.content : undefined;
-    const description = descriptionElem ? descriptionElem.content : undefined;
+    const description = descriptionElem
+        ? descriptionElem.content
+        : undefined;
     return {
         url: location.href,
         title: document.title,
@@ -38,9 +40,11 @@ function getDomDetails() {
         innerText: document.body.innerText,
     };
 }
-function sendMessage(action, data) {
+function sendDomDetails() {
+    const action = "sendDomDetails";
+    const data = getDomDetails();
     chrome.runtime.sendMessage({ action, data }, (response) => {
-        if (response.status === 'ok') {
+        if (response.status === "ok") {
             console.log("Page Details sent to background.");
         }
         else {
@@ -48,6 +52,12 @@ function sendMessage(action, data) {
         }
     });
 }
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+    if (request.action === "getDomDetails") {
+        sendDomDetails();
+        sendResponse({ status: "ok" });
+    }
+});
 let time = 0;
 const delta = 100;
 function main() {
@@ -58,7 +68,7 @@ function main() {
     }
     else {
         console.log(`waited for ${time}ms before being ready`);
-        sendMessage("sendDomDetails", getDomDetails());
+        sendDomDetails();
     }
 }
 main();

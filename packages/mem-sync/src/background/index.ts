@@ -44,6 +44,9 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     console.log(summary);
   } else if (request.action === "popupRegistration") {
     popupReady = true;
+    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    await chrome.tabs.sendMessage(tabs[0].id!, { action: "getDomDetails" });
+    sendResponse({ status: "ok" });
   }
 });
 
@@ -118,3 +121,14 @@ export async function getSummary(text: string, id: string) {
     console.log(`getSummary ERROR`);
   }
 }
+
+/**
+ * We need this to trigger the backgrou
+ */
+chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+  if (message.action === "triggerMemSave") {
+    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    console.log(`triggerMemSave:`, tabs);
+    sendResponse({ status: "ok" });
+  }
+});
